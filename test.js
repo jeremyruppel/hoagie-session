@@ -35,6 +35,51 @@ describe('hoagie-session', function() {
 
     app.run([]);
   });
-  it('reads from the session file');
-  it('writes to the session file');
+  it('reads from the session file', function(done) {
+    mock({ 'store.json': '{"foo":"bar"}' });
+
+    var app = hoagie();
+
+    app.use(subject('store.json'));
+    app.use(function(req /*, res, next */) {
+      assert.equal(req.session.foo, 'bar');
+      done();
+    });
+
+    app.run([]);
+  });
+  it('yields an error if the session cannot be parsed', function(done) {
+    mock({ 'store.json': '{"foo":' });
+
+    var app = hoagie();
+
+    app.use(subject('store.json'));
+    app.use(function(err, req, res, next) { // jshint ignore:line
+      assert.equal(err.name, 'SyntaxError');
+      assert.equal(err.message, 'Unexpected end of input');
+      done();
+    });
+
+    app.run([]);
+  });
+  it('writes to the session file', function(done) {
+    var app = hoagie();
+
+    app.use(subject('store.json'));
+    app.use(function(req, res, next) {
+      req.session.foo = 'bar';
+      next();
+    });
+
+    app.run([]).on('finish', function() {
+      var json = fs.readFileSync('store.json', 'utf8');
+      var data = JSON.parse(json);
+
+      assert.deepEqual(data, {
+        foo: 'bar'
+      });
+
+      done();
+    });
+  });
 });

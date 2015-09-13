@@ -10,6 +10,10 @@ module.exports = function session(filename) {
       return next(err);
     }
 
+    res.on('finish', function() {
+      write(filename, req.session);
+    });
+
     next();
   };
 
@@ -23,6 +27,10 @@ module.exports = function session(filename) {
 
   function read(filename) {
     return JSON.parse(fs.readFileSync(filename, 'utf8'));
+  }
+
+  function write(filename, data) {
+    fs.writeFileSync(filename, JSON.stringify(data, null, 2));
   }
 
 };
