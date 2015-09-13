@@ -2,7 +2,7 @@
 
 set -ex
 
-# npm run hint
+npm run hint
 npm run test
 
 node package.json

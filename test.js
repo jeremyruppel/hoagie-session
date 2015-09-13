@@ -4,6 +4,8 @@ var assert = require('assert');
 var mock = require('mock-fs');
 var fs = require('fs');
 
+/* jshint mocha:true */
+
 describe('hoagie-session', function() {
   beforeEach(function() {
     mock({});
@@ -16,12 +18,8 @@ describe('hoagie-session', function() {
 
     app.use(subject('store.json'));
     app.use(function(/* req, res, next */) {
-      try {
-        fs.statSync('store.json');
-        done();
-      } catch (err) {
-        done(err);
-      }
+      assert(fs.existsSync('store.json'));
+      done();
     });
 
     app.run([]);

@@ -4,7 +4,8 @@
   "description": "Session storage for hoagie applications",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test.js"
+    "test": "mocha test.js",
+    "hint": "jshint ."
   },
   "keywords": [
     "hoagie",
@@ -18,6 +19,7 @@
   "license": "ISC",
   "devDependencies": {
     "hoagie": "^2.1.0",
+    "jshint": "^2.8.0",
     "mocha": "^2.3.2",
     "mock-fs": "^3.2.0"
   }
