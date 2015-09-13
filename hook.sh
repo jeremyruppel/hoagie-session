@@ -3,6 +3,6 @@
 set -ex
 
 # npm run hint
-# npm run test
+npm run test
 
 node package.json

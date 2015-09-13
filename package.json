@@ -4,7 +4,7 @@
   "description": "Session storage for hoagie applications",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test.js"
   },
   "keywords": [
     "hoagie",
@@ -15,5 +15,10 @@
     "file"
   ],
   "author": "Jeremy Ruppel",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "hoagie": "^2.1.0",
+    "mocha": "^2.3.2",
+    "mock-fs": "^3.2.0"
+  }
 }
