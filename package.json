@@ -1,0 +1,19 @@
+{
+  "name": "hoagie-session",
+  "version": "1.0.0",
+  "description": "Session storage for hoagie applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hoagie",
+    "session",
+    "store",
+    "storage",
+    "JSON",
+    "file"
+  ],
+  "author": "Jeremy Ruppel",
+  "license": "ISC"
+}
