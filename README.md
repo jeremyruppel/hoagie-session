@@ -1,13 +1,15 @@
 # hoagie-session
 
-"Session" storage for hoagie applications.
+"Session" storage for [hoagie][hoagie] applications.
 
 > [![NPM version][npm-badge]][npm]
 > [![Build Status][travis-badge]][travis-ci]
 
 ## Install
 
-`$ npm install hoagie hoagie-session --save`
+``` bash
+$ npm install hoagie hoagie-session --save
+```
 
 ## Usage
 
