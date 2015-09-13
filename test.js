@@ -24,6 +24,19 @@ describe('hoagie-session', function() {
 
     app.run([]);
   });
+  it('infers the filename from the program name', function(done) {
+    var app = hoagie();
+
+    app.set('program', 'session');
+
+    app.use(subject());
+    app.use(function(/* req, res, next */) {
+      assert(fs.existsSync(process.env.HOME + '/.session'));
+      done();
+    });
+
+    app.run([]);
+  });
   it('exposes the session on the request', function(done) {
     var app = hoagie();
 

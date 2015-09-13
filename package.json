@@ -18,9 +18,12 @@
   "author": "Jeremy Ruppel",
   "license": "ISC",
   "devDependencies": {
-    "hoagie": "^2.1.1",
+    "hoagie": "^2.1.4",
     "jshint": "^2.8.0",
     "mocha": "^2.3.2",
     "mock-fs": "^3.2.0"
+  },
+  "dependencies": {
+    "debug": "^2.2.0"
   }
 }
