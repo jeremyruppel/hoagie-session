@@ -98,13 +98,32 @@ describe('hoagie-session', function() {
       next();
     });
 
-    app.run([]).on('exit', function() {
+    app.run([]).once('exit', function() {
       var json = fs.readFileSync('store.json', 'utf8');
       var data = JSON.parse(json);
 
       assert.deepEqual(data, {
         foo: 'bar'
       });
+
+      done();
+    });
+  });
+
+  it('does not write to the session file on a nonzero exit', function(done) {
+    var app = hoagie();
+
+    app.use(subject('store.json'));
+    app.use(function(req, res, next) {
+      req.session.foo = 'bar';
+      next(new Error('boom'));
+    });
+
+    app.run([]).once('exit', function() {
+      var json = fs.readFileSync('store.json', 'utf8');
+      var data = JSON.parse(json);
+
+      assert.deepEqual(data, {});
 
       done();
     });

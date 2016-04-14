@@ -19,7 +19,7 @@
   "author": "Jeremy Ruppel",
   "license": "ISC",
   "devDependencies": {
-    "hoagie": "~3.3.0",
+    "hoagie": "^3.4.0",
     "jshint": "^2.8.0",
     "mocha": "^2.3.2",
     "mock-fs": "^3.2.0"
@@ -28,6 +28,6 @@
     "debug": "^2.2.0"
   },
   "peerDependencies": {
-    "hoagie": "~3.3.0"
+    "hoagie": "^3.4.0"
   }
 }
