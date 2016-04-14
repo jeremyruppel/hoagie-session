@@ -7,12 +7,21 @@ var fs = require('fs');
 /* jshint mocha:true */
 
 describe('hoagie-session', function() {
+
+  before(function () {
+    // FIXME only need this because we're running multiple
+    // tests in the same process
+    process.stdout.setMaxListeners(0);
+  });
+
   beforeEach(function() {
     mock({});
   });
+
   afterEach(function() {
     mock.restore();
   });
+
   it('creates the session file', function(done) {
     var app = hoagie();
 
@@ -24,6 +33,7 @@ describe('hoagie-session', function() {
 
     app.run([]);
   });
+
   it('infers the filename from the program name', function(done) {
     var app = hoagie();
 
@@ -37,6 +47,7 @@ describe('hoagie-session', function() {
 
     app.run([]);
   });
+
   it('exposes the session on the request', function(done) {
     var app = hoagie();
 
@@ -48,6 +59,7 @@ describe('hoagie-session', function() {
 
     app.run([]);
   });
+
   it('reads from the session file', function(done) {
     mock({ 'store.json': '{"foo":"bar"}' });
 
@@ -61,6 +73,7 @@ describe('hoagie-session', function() {
 
     app.run([]);
   });
+
   it('yields an error if the session cannot be parsed', function(done) {
     mock({ 'store.json': '{"foo":' });
 
@@ -75,6 +88,7 @@ describe('hoagie-session', function() {
 
     app.run([]);
   });
+
   it('writes to the session file', function(done) {
     var app = hoagie();
 
@@ -84,7 +98,7 @@ describe('hoagie-session', function() {
       next();
     });
 
-    app.run([]).on('finish', function() {
+    app.run([]).on('exit', function() {
       var json = fs.readFileSync('store.json', 'utf8');
       var data = JSON.parse(json);
 
@@ -95,4 +109,5 @@ describe('hoagie-session', function() {
       done();
     });
   });
+
 });

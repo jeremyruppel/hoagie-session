@@ -14,7 +14,7 @@ module.exports = function session(filename) {
       return next(err);
     }
 
-    res.on('finish', function() {
+    res.on('exit', function() {
       write(filename, req.session);
     });
 
