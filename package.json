@@ -1,6 +1,6 @@
 {
   "name": "hoagie-session",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Session storage for hoagie applications",
   "main": "index.js",
   "repository": "jeremyruppel/hoagie-session",
