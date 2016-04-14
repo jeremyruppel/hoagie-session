@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Session storage for hoagie applications",
   "main": "index.js",
+  "repository": "jeremyruppel/hoagie-session",
   "scripts": {
     "test": "mocha test.js",
     "hint": "jshint ."
